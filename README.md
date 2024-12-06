@@ -1,5 +1,12 @@
 # senzingsdk-runtime
 
+## :warning: Warning
+
+This repository is specifically for Senzing SDK V4.
+It is not designed to work with Senzing API V3.
+
+To find the Senzing API V3 version of this repository, visit [senzingapi-runtime].
+
 ## Synopsis
 
 A Docker image with Senzingsdk library installed.
@@ -52,3 +59,4 @@ any use of this image complies with any relevant licenses for all software conta
 [license information]: https://senzing.com/end-user-license-agreement/
 [Senzing GitHub community]: https://github.com/Senzing/
 [senzing/senzingsdk-runtime]: https://hub.docker.com/r/senzing/senzingsdk-runtime
+[senzingapi-runtime]: https://github.com/Senzing/senzingapi-runtime
