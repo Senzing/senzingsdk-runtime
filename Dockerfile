@@ -4,21 +4,21 @@ FROM ${BASE_IMAGE}
 # Create the build image.
 
 ARG SENZING_ACCEPT_EULA="I_ACCEPT_THE_SENZING_EULA"
-ARG SENZING_APT_INSTALL_PACKAGE="senzingsdk-runtime=4.0.0-24323"
-ARG SENZING_APT_REPOSITORY_NAME="senzingrepo_2.0.1-1_all.deb"
-ARG SENZING_APT_REPOSITORY_URL="https://senzing-production-apt.s3.amazonaws.com"
+ARG SENZING_APT_INSTALL_PACKAGE="senzingsdk-runtime=4.0.0-24340"
+ARG SENZING_APT_REPOSITORY_NAME="senzingbetarepo_2.0.1-1_all.deb"
+ARG SENZING_APT_REPOSITORY_URL="https://senzing-beta-apt.s3.amazonaws.com"
 
-ENV REFRESHED_AT=2024-09-26
+ENV REFRESHED_AT=2024-12-26
 
 ENV SENZING_ACCEPT_EULA=${SENZING_ACCEPT_EULA} \
-  SENZING_APT_INSTALL_PACKAGE=${SENZING_APT_INSTALL_PACKAGE} \
-  SENZING_APT_REPOSITORY_NAME=${SENZING_APT_REPOSITORY_NAME} \
-  SENZING_APT_REPOSITORY_URL=${SENZING_APT_REPOSITORY_URL}
+    SENZING_APT_INSTALL_PACKAGE=${SENZING_APT_INSTALL_PACKAGE} \
+    SENZING_APT_REPOSITORY_NAME=${SENZING_APT_REPOSITORY_NAME} \
+    SENZING_APT_REPOSITORY_URL=${SENZING_APT_REPOSITORY_URL}
 
 LABEL Name="senzing/senzingsdk-runtime" \
-  Maintainer="support@senzing.com" \
-  Version="4.0.0-beta" \
-  SenzingSDK="4.0.0-beta"
+      Maintainer="support@senzing.com" \
+      Version="4.0.0-beta" \
+      SenzingSDK="4.0.0-beta"
 
 # Run as "root" for system installation.
 
@@ -31,26 +31,26 @@ ENV TERM=xterm
 # Install packages via apt.
 
 RUN apt-get update \
-  && apt-get -y install \
-  wget
+ && apt-get -y install \
+        wget
 
 # Install Senzing repository index.
 
 RUN wget -qO \
-  /${SENZING_APT_REPOSITORY_NAME} \
-  ${SENZING_APT_REPOSITORY_URL}/${SENZING_APT_REPOSITORY_NAME} \
-  && apt-get -y install \
-  /${SENZING_APT_REPOSITORY_NAME} \
-  && apt-get update \
-  && rm /${SENZING_APT_REPOSITORY_NAME}
+        /${SENZING_APT_REPOSITORY_NAME} \
+        ${SENZING_APT_REPOSITORY_URL}/${SENZING_APT_REPOSITORY_NAME} \
+ && apt-get -y install \
+        /${SENZING_APT_REPOSITORY_NAME} \
+ && apt-get update \
+ && rm /${SENZING_APT_REPOSITORY_NAME}
 
 # Install Senzing package.
 
 RUN apt-get -y install \
-  libpq5 \
-  ${SENZING_APT_INSTALL_PACKAGE} \
-  jq \
-  && apt-get clean
+        libpq5 \
+        ${SENZING_APT_INSTALL_PACKAGE} \
+        jq \
+ && apt-get clean
 
 HEALTHCHECK CMD apt list --installed | grep senzingsdk-runtime
 
