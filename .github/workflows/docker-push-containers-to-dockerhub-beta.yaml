@@ -20,7 +20,7 @@ jobs:
       - name: Build docker image and push to DockerHub
         uses: senzing-factory/github-action-docker-buildx-build@v1
         with:
-          build-options: "-q --push --build-arg SENZING_APT_INSTALL_PACKAGE=senzingsdk-runtime --build-arg SENZING_APT_REPOSITORY_NAME=${{ secrets.SENZING_APT_BETA_REPOSITORY_PACKAGE }}  --build-arg SENZING_APT_REPOSITORY_URL=${{ secrets.SENZING_APT_BETA_REPOSITORY_URL }}"
+          build-options: "-q --push --build-arg SENZING_APT_INSTALL_PACKAGE=senzingsdk-runtime --build-arg SENZING_APT_REPOSITORY_NAME=${{ secrets.SENZING_APT_BETA_STAGING_REPOSITORY_PACKAGE }}  --build-arg SENZING_APT_REPOSITORY_URL=${{ secrets.SENZING_APT_BETA_STAGING_REPOSITORY_URL }}"
           image-repository: senzing/${{ steps.repo-basename.outputs.repo }}-beta
           image-tag: latest
           password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
