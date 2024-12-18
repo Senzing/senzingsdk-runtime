@@ -1,11 +1,11 @@
-ARG BASE_IMAGE=debian:11.11-slim@sha256:00558f781b91e90469812bad32002f311ab26ef241b4a1996f6600680ec82f5c
+ARG BASE_IMAGE=debian:12-slim
 FROM ${BASE_IMAGE}
 
 # Create the build image.
 
 ARG SENZING_ACCEPT_EULA="I_ACCEPT_THE_SENZING_EULA"
-ARG SENZING_APT_INSTALL_PACKAGE="senzingapi-runtime"
-ARG SENZING_APT_REPOSITORY_NAME="senzingrepo_2.0.0-1_all.deb"
+ARG SENZING_APT_INSTALL_PACKAGE="senzingsdk-runtime"
+ARG SENZING_APT_REPOSITORY_NAME="senzingrepo_2.0.1-1_all.deb"
 ARG SENZING_APT_REPOSITORY_URL="https://senzing-production-apt.s3.amazonaws.com"
 
 ENV REFRESHED_AT=2024-12-06
@@ -56,7 +56,7 @@ HEALTHCHECK CMD apt list --installed | grep senzingsdk-runtime
 
 # Set environment variables for root.
 
-ENV LD_LIBRARY_PATH=/opt/senzing/g2/lib
+ENV LD_LIBRARY_PATH=/opt/senzing/er/lib
 
 # Runtime execution.
 
