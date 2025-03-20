@@ -11,14 +11,14 @@ ARG SENZING_APT_REPOSITORY_URL="https://senzing-production-apt.s3.amazonaws.com"
 ENV REFRESHED_AT=2024-12-06
 
 ENV SENZING_ACCEPT_EULA=${SENZING_ACCEPT_EULA} \
-    SENZING_APT_INSTALL_PACKAGE=${SENZING_APT_INSTALL_PACKAGE} \
-    SENZING_APT_REPOSITORY_NAME=${SENZING_APT_REPOSITORY_NAME} \
-    SENZING_APT_REPOSITORY_URL=${SENZING_APT_REPOSITORY_URL}
+  SENZING_APT_INSTALL_PACKAGE=${SENZING_APT_INSTALL_PACKAGE} \
+  SENZING_APT_REPOSITORY_NAME=${SENZING_APT_REPOSITORY_NAME} \
+  SENZING_APT_REPOSITORY_URL=${SENZING_APT_REPOSITORY_URL}
 
 LABEL Name="senzing/senzingsdk-runtime" \
-      Maintainer="support@senzing.com" \
-      Version="4.0.0-beta" \
-      SenzingSDK="4.0.0-beta"
+  Maintainer="support@senzing.com" \
+  Version="4.0.0-beta" \
+  SenzingSDK="4.0.0-beta"
 
 # Run as "root" for system installation.
 
@@ -30,27 +30,27 @@ ENV TERM=xterm
 
 # Install packages via apt.
 
-RUN apt-get update \
- && apt-get -y install \
-        wget
+RUN apt-get -qqq update \
+  && apt-get -yqqq install \
+  wget
 
 # Install Senzing repository index.
 
-RUN wget -qO \
-        /${SENZING_APT_REPOSITORY_NAME} \
-        ${SENZING_APT_REPOSITORY_URL}/${SENZING_APT_REPOSITORY_NAME} > /dev/null \
- && apt-get -y -qq install \
-        /${SENZING_APT_REPOSITORY_NAME} \
- && apt-get update \
- && rm /${SENZING_APT_REPOSITORY_NAME}
+RUN wget -qqqO \
+  /${SENZING_APT_REPOSITORY_NAME} \
+  ${SENZING_APT_REPOSITORY_URL}/${SENZING_APT_REPOSITORY_NAME} > /dev/null \
+  && apt-get -y -qqq install \
+  /${SENZING_APT_REPOSITORY_NAME} \
+  && apt-get update -qqq \
+  && rm /${SENZING_APT_REPOSITORY_NAME}
 
 # Install Senzing package.
 
-RUN apt-get -y install \
-        libpq5 \
-        ${SENZING_APT_INSTALL_PACKAGE} \
-        jq \
- && apt-get clean
+RUN apt-get -yqqq install \
+  libpq5 \
+  ${SENZING_APT_INSTALL_PACKAGE} \
+  jq \
+  && apt-get clean
 
 HEALTHCHECK CMD apt list --installed | grep senzingsdk-runtime
 

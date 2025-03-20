@@ -18,11 +18,14 @@ jobs:
         shell: bash
 
       - name: Build docker image and push to DockerHub
-        uses: senzing-factory/github-action-docker-buildx-build@v1
+        uses: senzing-factory/github-action-docker-buildx-build@v2
         with:
-          build-options: "-q --push --build-arg SENZING_APT_INSTALL_PACKAGE=senzingsdk-runtime --build-arg SENZING_APT_REPOSITORY_NAME=${{ secrets.SENZING_APT_BETA_REPOSITORY_PACKAGE }}  --build-arg SENZING_APT_REPOSITORY_URL=${{ secrets.SENZING_APT_BETA_REPOSITORY_URL }}"
+          build-options: |
+            SENZING_APT_INSTALL_PACKAGE=senzingsdk-runtime
+            SENZING_APT_REPOSITORY_NAME=${{ secrets.SENZING_APT_BETA_REPOSITORY_PACKAGE }}
+            SENZING_APT_REPOSITORY_URL=${{ secrets.SENZING_APT_BETA_REPOSITORY_URL }}
           image-repository: senzing/${{ steps.repo-basename.outputs.repo }}
           image-tag: latest
           password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
-          platforms: "linux/amd64,linux/arm64"
+          push: true
           username: ${{ secrets.DOCKERHUB_USERNAME }}
