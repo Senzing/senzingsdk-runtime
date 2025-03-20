@@ -20,7 +20,6 @@ jobs:
         uses: senzing-factory/github-action-docker-buildx-build@v2
         with:
           build-options: |
-            -q
             SENZING_APT_INSTALL_PACKAGE=senzingsdk-runtime
             SENZING_APT_REPOSITORY_NAME=${{ secrets.SENZING_APT_BETA_STAGING_REPOSITORY_PACKAGE }}
             SENZING_APT_REPOSITORY_URL=${{ secrets.SENZING_APT_BETA_STAGING_REPOSITORY_URL }}
