@@ -36,12 +36,12 @@ RUN apt-get -qqq update \
 
 # Install Senzing repository index.
 
-RUN wget -qqqO \
+RUN wget -O \
   /${SENZING_APT_REPOSITORY_NAME} \
   ${SENZING_APT_REPOSITORY_URL}/${SENZING_APT_REPOSITORY_NAME} > /dev/null \
-  && apt-get -y -qqq install \
+  && apt-get -y - install \
   /${SENZING_APT_REPOSITORY_NAME} \
-  && apt-get update -qqq \
+  && apt-get update - \
   && rm /${SENZING_APT_REPOSITORY_NAME}
 
 # Install Senzing package.
