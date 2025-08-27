@@ -7,17 +7,17 @@ and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
 
+## [4.0.0] - 2025-08-27
+
+### Changed in 4.0.0
+
+- Based on Senzing 4.0.0
+
 ## [0.2.1] - 2025-08-26
 
 ### Changed in 0.2.1
 
 - Fix issue
-
-## [0.2.0] - 2025-08-26
-
-### Changed in 0.2.0
-
-- Pre-production test
 
 [Keep a Changelog]: https://keepachangelog.com/en/1.0.0/
 [markdownlint]: https://dlaa.me/markdownlint/
