@@ -32,6 +32,7 @@ ENV TERM=xterm
 
 RUN apt-get update \
   && apt-get -y --no-install-recommends install \
+      ca-certificates \
       wget
 
 # Install Senzing repository index and package.
