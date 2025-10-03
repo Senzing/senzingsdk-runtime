@@ -30,27 +30,25 @@ ENV TERM=xterm
 
 # Install packages via apt.
 
-RUN apt-get -qqq update \
- && apt-get -yqqq install \
+RUN apt-get update \
+  && apt-get -y --no-install-recommends install \
+      ca-certificates \
       wget
 
-# Install Senzing repository index.
+# Install Senzing repository index and package.
 
-RUN wget -qqqO \
+RUN wget -O \
       /${SENZING_APT_REPOSITORY_NAME} \
       ${SENZING_APT_REPOSITORY_URL}/${SENZING_APT_REPOSITORY_NAME} > /dev/null \
- && apt-get -y -qqq install \
+  && apt-get -y --no-install-recommends install \
       /${SENZING_APT_REPOSITORY_NAME} \
- && apt-get update -qqq \
- && rm /${SENZING_APT_REPOSITORY_NAME}
-
-# Install Senzing package.
-
-RUN apt-get -yqqq install \
+  && apt-get update -qqq \
+  && rm /${SENZING_APT_REPOSITORY_NAME} \
+  && apt-get -y --no-install-recommends install \
       libpq5 \
       ${SENZING_APT_INSTALL_PACKAGE} \
       jq \
- && apt-get clean
+  && apt-get clean
 
 HEALTHCHECK CMD apt list --installed | grep senzingsdk-runtime
 
