@@ -21,7 +21,10 @@
     "stackoverflow",
     "testrun",
     "toplevel",
+    "trixie",
     "yqqq"
   ],
-  "ignorePaths": [".git/**"]
+  "ignorePaths": [
+    ".git/**"
+  ]
 }
