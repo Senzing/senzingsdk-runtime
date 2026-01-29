@@ -17,8 +17,8 @@ ENV SENZING_ACCEPT_EULA=${SENZING_ACCEPT_EULA} \
 
 LABEL Name="senzing/senzingsdk-runtime" \
       Maintainer="support@senzing.com" \
-      Version="4.1.0" \
-      SenzingSDK="4.1.0"
+      Version="4.2.0" \
+      SenzingSDK="4.2.0"
 
 # Run as "root" for system installation.
 

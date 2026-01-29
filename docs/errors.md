@@ -1,1 +1,1 @@
-## Errors
+## senzingsdk-runtime errors
