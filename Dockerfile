@@ -8,7 +8,7 @@ ARG SENZING_APT_INSTALL_PACKAGE="senzingsdk-runtime"
 ARG SENZING_APT_REPOSITORY_NAME="senzingrepo_2.0.1-1_all.deb"
 ARG SENZING_APT_REPOSITORY_URL="https://senzing-production-apt.s3.amazonaws.com"
 
-ENV REFRESHED_AT=2026-01-05
+ENV REFRESHED_AT=2026-01-29
 
 ENV SENZING_ACCEPT_EULA=${SENZING_ACCEPT_EULA} \
     SENZING_APT_INSTALL_PACKAGE=${SENZING_APT_INSTALL_PACKAGE} \
@@ -17,8 +17,8 @@ ENV SENZING_ACCEPT_EULA=${SENZING_ACCEPT_EULA} \
 
 LABEL Name="senzing/senzingsdk-runtime" \
       Maintainer="support@senzing.com" \
-      Version="4.1.0" \
-      SenzingSDK="4.1.0"
+      Version="4.2.0" \
+      SenzingSDK="4.2.0"
 
 # Run as "root" for system installation.
 
