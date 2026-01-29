@@ -56,7 +56,7 @@ docker run -it --rm --privileged \
   dockerfile_lint -f Dockerfile
 ```
 
-Or use the online linter at https://www.fromlatest.io
+Or use the online linter at <https://www.fromlatest.io>
 
 ## Dockerfile Update Notes
 
