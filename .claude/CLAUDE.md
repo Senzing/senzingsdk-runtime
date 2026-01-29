@@ -48,6 +48,7 @@ make help
 ## Linting
 
 Dockerfile linting can be done manually:
+
 ```bash
 docker run -it --rm --privileged \
   --volume $PWD:/root/ \
@@ -60,6 +61,7 @@ Or use the online linter at https://www.fromlatest.io
 ## Dockerfile Update Notes
 
 When updating the base image digest in `Dockerfile`:
+
 1. Update the `BASE_IMAGE` ARG with new digest
 2. Update `REFRESHED_AT` date to current date (YYYY-MM-DD format)
 3. The `verify-dockerfile-refreshed-at-updated.yaml` workflow will fail if these are not kept in sync
