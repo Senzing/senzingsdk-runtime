@@ -12,6 +12,7 @@
     "esbenp",
     "ICLA",
     "ignorefile",
+    "kernelsam",
     "libpostal",
     "libpq",
     "projectatomic",
@@ -26,5 +27,7 @@
     "trixie",
     "yqqq"
   ],
-  "ignorePaths": [".git/**"]
+  "ignorePaths": [
+    ".git/**"
+  ]
 }
