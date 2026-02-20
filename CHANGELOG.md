@@ -7,6 +7,12 @@ This project adheres to [Semantic Versioning].
 
 ## [Unreleased]
 
+## [4.2.1] - 2026-02-20
+
+### Changed in 4.2.1
+
+- Based on Senzing 4.2.1
+
 ## [4.2.0] - 2026-01-29
 
 ### Changed in 4.2.0
