@@ -9,7 +9,6 @@
     "cooldown",
     "Dockerfiles",
     "dockerhub",
-    "esbenp",
     "ICLA",
     "ignorefile",
     "kernelsam",
@@ -21,11 +20,11 @@
     "senzingapi",
     "senzingrepo",
     "senzingsdk",
-    "stackoverflow",
     "testrun",
     "toplevel",
-    "trixie",
-    "yqqq"
+    "trixie"
   ],
-  "ignorePaths": [".git/**"]
+  "ignorePaths": [
+    ".git/**"
+  ]
 }
