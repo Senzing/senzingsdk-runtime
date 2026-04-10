@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=debian:13-slim@sha256:1d3c811171a08a5adaa4a163fbafd96b61b87aa871bbc7aa15431ac275d3d430
+ARG BASE_IMAGE=debian:13-slim@sha256:4ffb3a1511099754cddc70eb1b12e50ffdb67619aa0ab6c13fcd800a78ef7c7a
 FROM ${BASE_IMAGE}
 
 # Create the build image.
@@ -8,7 +8,7 @@ ARG SENZING_APT_INSTALL_PACKAGE="senzingsdk-runtime"
 ARG SENZING_APT_REPOSITORY_NAME="senzingrepo_2.0.1-1_all.deb"
 ARG SENZING_APT_REPOSITORY_URL="https://senzing-production-apt.s3.amazonaws.com"
 
-ENV REFRESHED_AT=2026-03-18
+ENV REFRESHED_AT=2026-04-07
 
 ENV SENZING_ACCEPT_EULA=${SENZING_ACCEPT_EULA} \
     SENZING_APT_INSTALL_PACKAGE=${SENZING_APT_INSTALL_PACKAGE} \
@@ -17,8 +17,8 @@ ENV SENZING_ACCEPT_EULA=${SENZING_ACCEPT_EULA} \
 
 LABEL Name="senzing/senzingsdk-runtime" \
       Maintainer="support@senzing.com" \
-      Version="4.2.2" \
-      SenzingSDK="4.2.2"
+      Version="4.2.3" \
+      SenzingSDK="4.2.3"
 
 # Run as "root" for system installation.
 
