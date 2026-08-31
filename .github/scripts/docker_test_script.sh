@@ -16,8 +16,8 @@ else
     exit 1
 fi
 
-# /opt/senzing/data/libpostal/data_version
-FILE=/opt/senzing/data/libpostal/data_version
+# /opt/senzing/data/address_datamodel/model.onnx
+FILE=/opt/senzing/data/address_datamodel/model.onnx
 if test -f "$FILE"; then
     echo "[INFO] $FILE exists."
 else
@@ -42,15 +42,21 @@ if test -f "$FILE"; then
     # extract build_version from the json 
     BUILD_VERSION=$(cat $FILE | jq ".BUILD_VERSION" | cut -d '"' -f 2)
 
-    # replace build_version - with .
-    SZ_APT_PKG_VERSION=$(echo "$SENZING_APT_INSTALL_PACKAGE" | sed 's/\(.*\)-/\1./' | cut -d "=" -f 2)
+    # only compare when SENZING_APT_INSTALL_PACKAGE pins a version, e.g. "senzingsdk-runtime=4.4.0-26242"
+    if [[ "$SENZING_APT_INSTALL_PACKAGE" == *"="* ]]; then
 
-    # compare with SENZING_APT_INSTALL_PACKAGE
-    if [ "$BUILD_VERSION" = "$SZ_APT_PKG_VERSION" ]; then
-        echo "[INFO] Build version is the same as SENZING_APT_INSTALL_PACKAGE env."
+        # replace build_version - with .
+        SZ_APT_PKG_VERSION=$(echo "$SENZING_APT_INSTALL_PACKAGE" | sed 's/\(.*\)-/\1./' | cut -d "=" -f 2)
+
+        # compare with SENZING_APT_INSTALL_PACKAGE
+        if [ "$BUILD_VERSION" = "$SZ_APT_PKG_VERSION" ]; then
+            echo "[INFO] Build version is the same as SENZING_APT_INSTALL_PACKAGE env."
+        else
+            echo "[ERROR] Build version is not the same as SENZING_APT_INSTALL_PACKAGE env."
+            exit 1
+        fi
     else
-        echo "[ERROR] Build version is not the same as SENZING_APT_INSTALL_PACKAGE env."
-        exit 1
+        echo "[INFO] SENZING_APT_INSTALL_PACKAGE is not version-pinned; installed build version is $BUILD_VERSION."
     fi
 else
     echo "[ERROR] $FILE does not exist."
