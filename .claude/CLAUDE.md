@@ -35,8 +35,8 @@ make help
 
 - `.github/scripts/docker_test_script.sh` - Verification script run by `make docker-test`:
   - Checks `LD_LIBRARY_PATH` is set
-  - Verifies `/opt/senzing/er/g2BuildVersion.json` exists
-  - Verifies `/opt/senzing/data/libpostal/data_version` exists
+  - Verifies `/opt/senzing/er/szBuildVersion.json` exists
+  - Verifies `/opt/senzing/data/address_datamodel/model.onnx` exists
   - Validates build version matches installed package
 
 ## CI/CD Workflows
